@@ -1,0 +1,302 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.20f1 (01d83b40d570) revision 120891'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16236 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+E:\Unity\2022.1.20f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+E:/GitProject/Journey-to-Wellness/Journey to Wellness
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+52635
+Successfully changed project path to: E:/GitProject/Journey-to-Wellness/Journey to Wellness
+E:/GitProject/Journey-to-Wellness/Journey to Wellness
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 72.04 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.20f1 (01d83b40d570)
+[Subsystems] Discovering subsystems at path E:/Unity/2022.1.20f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/GitProject/Journey-to-Wellness/Journey to Wellness/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2560)
+    Vendor:   NVIDIA
+    VRAM:     6023 MB
+    Driver:   30.0.15.1236
+Initialize mono
+Mono path[0] = 'E:/Unity/2022.1.20f1/Editor/Data/Managed'
+Mono path[1] = 'E:/Unity/2022.1.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'E:/Unity/2022.1.20f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56388
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2022.1.20f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: E:/Unity/2022.1.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: E:/Unity/2022.1.20f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.002419 seconds.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 68.54 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.575 seconds
+Domain Reload Profiling:
+	ReloadAssembly (576ms)
+		BeginReloadAssembly (72ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (413ms)
+			LoadAssemblies (72ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (98ms)
+				TypeCache.Initialize (97ms)
+					TypeCache.ScanAssembly (96ms)
+				ResolveRequiredComponents (1ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (244ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (69ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (117ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004503 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\GitProject\Journey-to-Wellness\Journey to Wellness\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\GitProject\Journey-to-Wellness\Journey to Wellness\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.948 seconds
+Domain Reload Profiling:
+	ReloadAssembly (948ms)
+		BeginReloadAssembly (113ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (745ms)
+			LoadAssemblies (84ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (227ms)
+				TypeCache.Initialize (224ms)
+					TypeCache.ScanAssembly (220ms)
+				ResolveRequiredComponents (3ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (351ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (8ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (73ms)
+				ProcessInitializeOnLoadAttributes (236ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3400 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (58.2 KB). Loaded Objects now: 3860.
+Memory consumption went from 0.51 GB to 0.51 GB.
+Total: 2.834700 ms (FindLiveObjects: 0.229100 ms CreateObjectMapping: 0.091200 ms MarkObjects: 2.445500 ms  DeleteObjects: 0.067900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 146168.120193 seconds.
+  path: Assets/FoodAndGrocery/Items/Chips/Chips.fbx
+  artifactKey: Guid(3eb9ce3954e81a547a9bad89618388fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Chips/Chips.fbx using Guid(3eb9ce3954e81a547a9bad89618388fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b67dfa0cae7802d9bff680552fb5f3fd') in 0.132365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.886679 seconds.
+  path: Assets/FoodAndGrocery/Items/Dough/Dough.fbx
+  artifactKey: Guid(4bbf94c4dfa64ba4395b5fcbfbd4ef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Dough/Dough.fbx using Guid(4bbf94c4dfa64ba4395b5fcbfbd4ef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9c33b28d86a9a32a53ce3804ce0d3ac') in 0.015344 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.065862 seconds.
+  path: Assets/FoodAndGrocery/Items/Leek/Leek.fbx
+  artifactKey: Guid(67967c3a2d033f24f972f53675021339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Leek/Leek.fbx using Guid(67967c3a2d033f24f972f53675021339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c809ceface8ecbfbd5d0530716ce2b7') in 0.013609 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.144606 seconds.
+  path: Assets/FoodAndGrocery/Items/Mozzarella/Mozzarella.fbx
+  artifactKey: Guid(faa380f339b11c14f84958f35cf52da8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Mozzarella/Mozzarella.fbx using Guid(faa380f339b11c14f84958f35cf52da8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '059393ade8b80036818a4af294a01cf4') in 0.016797 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.716875 seconds.
+  path: Assets/FoodAndGrocery/Items/Pear/Pear.fbx
+  artifactKey: Guid(d42110035b1f0764dac7ebef8e7a178c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Pear/Pear.fbx using Guid(d42110035b1f0764dac7ebef8e7a178c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4aa13ce9a3915f4a4139f39fad1e1f86') in 0.018072 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.420836 seconds.
+  path: Assets/FoodAndGrocery/Items/SaladBowl/SaladBowl.fbx
+  artifactKey: Guid(2516e43dbcca1f5449dc2d4199b7cc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/SaladBowl/SaladBowl.fbx using Guid(2516e43dbcca1f5449dc2d4199b7cc63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6500928fa167ae54714d3cce9e2a017b') in 0.015884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.813058 seconds.
+  path: Assets/FoodAndGrocery/Items/SprayBottle/SprayBottle.fbx
+  artifactKey: Guid(30bb67eec4a39a8469953d5fa442a542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/SprayBottle/SprayBottle.fbx using Guid(30bb67eec4a39a8469953d5fa442a542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cc1e8614cf7dcea59f07cc12015189e') in 0.013343 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.494476 seconds.
+  path: Assets/FoodAndGrocery/Items/SoapBottle/SoapBottle.fbx
+  artifactKey: Guid(95837a867f13d5340927fadbe3ecffb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/SoapBottle/SoapBottle.fbx using Guid(95837a867f13d5340927fadbe3ecffb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8aa9aaaa5316071392db2cabe38a2377') in 0.013102 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.526594 seconds.
+  path: Assets/FoodAndGrocery/Items/Soil/Soil.fbx
+  artifactKey: Guid(406cc5b04bc453147819324b69fdd323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Soil/Soil.fbx using Guid(406cc5b04bc453147819324b69fdd323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fc2856c364172ea837a52f6f4a77da1') in 0.013738 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 168.498650 seconds.
+  path: Assets/FoodAndGrocery/Items/Strawberry/Strawberry.fbx
+  artifactKey: Guid(34c3d6707c3fb9b4791a29f729177a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Strawberry/Strawberry.fbx using Guid(34c3d6707c3fb9b4791a29f729177a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30b206292ef16b64524fb7777e65b2f7') in 0.013618 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.716562 seconds.
+  path: Assets/FoodAndGrocery/Items/Tomato/Tomato.fbx
+  artifactKey: Guid(3c8726c7ba21fc64fbc2a8a1dd83be57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Tomato/Tomato.fbx using Guid(3c8726c7ba21fc64fbc2a8a1dd83be57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6379cdce8cc40a72fade88ad908b8969') in 0.013689 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 28.642577 seconds.
+  path: Assets/Scenes/Supermarket.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Supermarket.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5fc4a44f157323385cfe4db73be68f0') in 0.001372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.311899 seconds.
+  path: Assets/FoodAndGrocery/Items/BeerBox/Prefabs/BeerBox_Blue.prefab
+  artifactKey: Guid(232e380ac4bac584eb640418254c6585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/BeerBox/Prefabs/BeerBox_Blue.prefab using Guid(232e380ac4bac584eb640418254c6585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '676779e028a8878808a0cb000a348550') in 0.020460 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/FoodAndGrocery/Items/Can/Prefabs/Can_Red.prefab
+  artifactKey: Guid(98567582113585e468a4235b7ed41b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Can/Prefabs/Can_Red.prefab using Guid(98567582113585e468a4235b7ed41b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '488c67de986f171aa0ff7a2630a5aef6') in 0.008468 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/FoodAndGrocery/Items/Joghurt/Prefabs/Joghurt_Green.prefab
+  artifactKey: Guid(6757d458be8adca4183007a2f6002793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Joghurt/Prefabs/Joghurt_Green.prefab using Guid(6757d458be8adca4183007a2f6002793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd06be78f38a8192b96277ce29e4a7c39') in 0.009519 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/FoodAndGrocery/Items/Can/Prefabs/Can_Orange.prefab
+  artifactKey: Guid(f0c94c7081db13a4f89831fe9957f93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Can/Prefabs/Can_Orange.prefab using Guid(f0c94c7081db13a4f89831fe9957f93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cebcd54f01cd390750433bd6d0499f2') in 0.008526 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/FoodAndGrocery/Items/Joghurt/Prefabs/Joghurt_Yellow.prefab
+  artifactKey: Guid(1545f108cd3ab184cadcfd3b27755317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Joghurt/Prefabs/Joghurt_Yellow.prefab using Guid(1545f108cd3ab184cadcfd3b27755317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9097c9a40e118eaa591a725a8213ec32') in 0.009382 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/FoodAndGrocery/Items/PetBottles/Prefabs/Bottle_Broke.prefab
+  artifactKey: Guid(e6422d5dcb194494e8860c468f61317d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/PetBottles/Prefabs/Bottle_Broke.prefab using Guid(e6422d5dcb194494e8860c468f61317d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a85f298a880813af2d8da24f16d0cedb') in 0.008367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/FoodAndGrocery/Items/PetBottles/Prefabs/Bottle_Santa.prefab
+  artifactKey: Guid(0427c64d8fdbee04f9a40fdde44b082d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/PetBottles/Prefabs/Bottle_Santa.prefab using Guid(0427c64d8fdbee04f9a40fdde44b082d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fbb0d3bdfce81c857d834de33e029f0') in 0.211226 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/FoodAndGrocery/Items/Dough/Prefabs/Dough_Green.prefab
+  artifactKey: Guid(8d4384ee15e70e448bb843e0f7a63614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Dough/Prefabs/Dough_Green.prefab using Guid(8d4384ee15e70e448bb843e0f7a63614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10b0b5e12f2f8294810ae1e031e9769c') in 0.009621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/FoodAndGrocery/Items/Dough/Prefabs/Dough_Blue.prefab
+  artifactKey: Guid(1397caa34d4a25f4b92644c2fd15f78f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FoodAndGrocery/Items/Dough/Prefabs/Dough_Blue.prefab using Guid(1397caa34d4a25f4b92644c2fd15f78f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02e1f9b69d7264d75b7c744a0d5001f2') in 0.008404 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
