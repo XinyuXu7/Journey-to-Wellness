@@ -1,38 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// 摄像机的旋转
-/// </summary>
-
 
 public class CameraControl : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;//视线灵敏度
-    public Transform playerBody;//玩家的位置
-    public float yRotation = 0f;
+    public Transform target; // 目标对象，通常设置为角色对象
+    public float distance = 5.0f; // 摄像机距离角色的距离
+    public float height = 2.0f; // 摄像机相对于角色的高度
+    public float heightDamping = 2.0f; // 高度的阻尼，用于平滑摄像机的高度变化
+    public float rotationDamping = 1.0f; // 旋转的阻尼，用于平滑摄像机的旋转变化
 
-    // Start is called before the first frame update
-    void Start()
+    void LateUpdate()
     {
-        //隐藏光标
-        Cursor.lockState = CursorLockMode.Locked;
+        // 验证目标是否存在
+        if (!target) return;
 
-    }
+        // 计算期望的摄像机旋转角度和高度
+        float wantedRotationAngle = target.eulerAngles.y;
+        float wantedHeight = target.position.y + height;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        // 获取当前的摄像机旋转角度和高度
+        float currentRotationAngle = transform.eulerAngles.y;
+        float currentHeight = transform.position.y;
 
-        yRotation -= mouseY;//将上下旋转轴值进行累加（鼠标反转
+        // 通过阻尼进行平滑旋转角度和高度的过渡
+        currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
+        currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
 
-        yRotation = Mathf.Clamp(yRotation, -80f, 80f);//旋转角度设置
+        // 将角度转换为旋转，使摄像机始终对准角色的背部
+        Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
 
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);//横向旋转
+        // 设置摄像机的位置为目标位置减去旋转的方向乘以距离
+        transform.position = target.position;
+        transform.position -= currentRotation * Vector3.forward * distance;
 
+        // 调整摄像机的高度
+        transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
 
+        // 使摄像机始终朝向角色
+        transform.LookAt(target);
     }
 }
