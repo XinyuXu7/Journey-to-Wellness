@@ -106,12 +106,12 @@ public class CharacterControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             m_animator.SetTrigger("Pickup");
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             m_animator.SetTrigger("Wave");
         }

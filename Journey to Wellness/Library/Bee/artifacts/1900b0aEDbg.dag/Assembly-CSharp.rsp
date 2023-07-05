@@ -357,8 +357,13 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/Rabbits/Demo/Scripts/AnimatorParamatersChange.cs"
+"Assets/Scripts/AI_Movement.cs"
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/CharacterControl.cs"
+"Assets/Scripts/InteractableObject.cs"
+"Assets/Scripts/MouseMovement.cs"
+"Assets/Scripts/SelectionManager.cs"
 -langversion:9.0
 
 /deterministic
