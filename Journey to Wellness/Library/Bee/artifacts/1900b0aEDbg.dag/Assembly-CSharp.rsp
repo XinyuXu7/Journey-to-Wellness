@@ -361,7 +361,10 @@
 "Assets/Scripts/AI_Movement.cs"
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/CharacterControl.cs"
+"Assets/Scripts/DragDrop.cs"
 "Assets/Scripts/InteractableObject.cs"
+"Assets/Scripts/InventorySystem.cs"
+"Assets/Scripts/ItemSlot.cs"
 "Assets/Scripts/MouseMovement.cs"
 "Assets/Scripts/SelectionManager.cs"
 -langversion:9.0
