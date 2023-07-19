@@ -156,7 +156,6 @@ public class InventorySystem : MonoBehaviour
                 string str1 = "(Clone)";
                 string result = name.Replace(str1,"");
 
-
                 itemList.Add(result);
             }
         }

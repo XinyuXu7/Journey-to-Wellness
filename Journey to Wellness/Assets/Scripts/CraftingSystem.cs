@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class CraftingSystem : MonoBehaviour
 {
@@ -21,8 +23,8 @@ public class CraftingSystem : MonoBehaviour
     Button craftFruitSaladBTN;
 
     //Requirement Text
-    Text AxeReq1, AxeReq2;
-    Text FruitSaladReq1, FruitSaladReq2;
+    TextMeshProUGUI AxeReq1, AxeReq2;
+    TextMeshProUGUI FruitSaladReq1, FruitSaladReq2;
 
     public bool isOpen;
 
@@ -57,16 +59,16 @@ public class CraftingSystem : MonoBehaviour
         foodsBTN.onClick.AddListener(delegate { OpenFoodsCategory(); });
 
         //Axe
-        AxeReq1 = toolsScreenUI.transform.Find("Axe").transform.Find("req1").GetComponent<Text>();
-        AxeReq2 = toolsScreenUI.transform.Find("Axe").transform.Find("req2").GetComponent<Text>();
+        AxeReq1 = toolsScreenUI.transform.Find("Axe").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        AxeReq2 = toolsScreenUI.transform.Find("Axe").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
         craftAxeBTN = toolsScreenUI.transform.Find("Axe").transform.Find("Button").GetComponent<Button>();
         craftAxeBTN.onClick.AddListener(delegate { CraftAnyItem(AxeBLP); });
 
 
         //Fruit salad
-        FruitSaladReq1 = foodsScreenUI.transform.Find("FruitSalad").transform.Find("req1").GetComponent<Text>();
-        FruitSaladReq2 = foodsScreenUI.transform.Find("FruitSalad").transform.Find("req2").GetComponent<Text>();
+        FruitSaladReq1 = foodsScreenUI.transform.Find("FruitSalad").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        FruitSaladReq2 = foodsScreenUI.transform.Find("FruitSalad").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
         craftFruitSaladBTN = foodsScreenUI.transform.Find("FruitSalad").transform.Find("Button").GetComponent<Button>();
         craftFruitSaladBTN.onClick.AddListener(delegate { CraftAnyItem(FruitSaladBLP); });
@@ -84,25 +86,6 @@ public class CraftingSystem : MonoBehaviour
         foodsScreenUI.SetActive(true);
     }
 
-    void CraftAnyItem(Blueprint blueprintToCraft)
-    {
-        //add item into inventory
-        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
-
-        if(blueprintToCraft.numOfRequirements == 1)
-        {
-            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
-        }else if(blueprintToCraft.numOfRequirements == 2)
-        {
-            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
-            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
-        }
-
-        StartCoroutine(calculate());
-
-        RefreshNeededItems();
-        //remove resources from inventory                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-    }
 
     public IEnumerator calculate()
     {
@@ -111,11 +94,31 @@ public class CraftingSystem : MonoBehaviour
         InventorySystem.Instance.ReCalculeList();
     }
 
+    void CraftAnyItem(Blueprint blueprintToCraft)
+    {
+        //add item into inventory
+        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
 
+        if (blueprintToCraft.numOfRequirements == 1)
+        {
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
+        }
+        else if (blueprintToCraft.numOfRequirements == 2)
+        {
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
+        }
+
+        InventorySystem.Instance.ReCalculeList();
+        //StartCoroutine(calculate());
+
+        RefreshNeededItems();
+
+    }
     // Update is called once per frame
     void Update()
     {
-        //RefreshNeededItems();
+        RefreshNeededItems();
 
         if (Input.GetKeyDown(KeyCode.C) && !isOpen)
         {
@@ -162,6 +165,9 @@ public class CraftingSystem : MonoBehaviour
                     break;
                 case "Banana":
                     banana_count += 1;
+                    break;
+                default:
+                    Debug.Log("Unknown item: " + itemName);
                     break;
             }
         }

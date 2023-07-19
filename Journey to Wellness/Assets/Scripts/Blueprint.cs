@@ -15,7 +15,9 @@ public class Blueprint
     {
         itemName = name;
         numOfRequirements = reqNUM;
-        Req1 = R1; Req2 = R2;
-        Req1amount = R1num; Req2amount = R2num;
+        Req1 = R1;
+        Req2 = R2;
+        Req1amount = R1num; 
+        Req2amount = R2num;
     }
 }
