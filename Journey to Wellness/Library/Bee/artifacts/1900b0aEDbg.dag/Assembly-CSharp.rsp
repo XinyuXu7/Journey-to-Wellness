@@ -356,7 +356,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
-"Assets/Prefabs/Rabbits/Demo/Scripts/AnimatorParamatersChange.cs"
+"Assets/FoodAndGrocery/Items/Rabbits/Demo/Scripts/AnimatorParamatersChange.cs"
 "Assets/Scripts/AI_Movement.cs"
 "Assets/Scripts/Back.cs"
 "Assets/Scripts/Blueprint.cs"

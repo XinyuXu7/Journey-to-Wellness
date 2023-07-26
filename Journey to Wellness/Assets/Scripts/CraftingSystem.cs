@@ -30,7 +30,7 @@ public class CraftingSystem : MonoBehaviour
 
     //All blueprint
     public Blueprint AxeBLP = new Blueprint("Axe", 2, "Stone", 3, "Stick", 3);
-    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad", 2, "Apple", 2, "Banana", 1);
+    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad", 2, "Apple", 2, "Lemon", 1);
 
 
     public static CraftingSystem Instance { get; set; }
@@ -109,8 +109,8 @@ public class CraftingSystem : MonoBehaviour
             InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
         }
 
-        InventorySystem.Instance.ReCalculeList();
-        //StartCoroutine(calculate());
+        //InventorySystem.Instance.ReCalculeList();
+        StartCoroutine(calculate());
 
         RefreshNeededItems();
 
@@ -146,7 +146,7 @@ public class CraftingSystem : MonoBehaviour
         int stick_count = 0;
 
         int apple_count = 0;
-        int banana_count = 0;
+        int lemon_count = 0;
 
         inventoryItemList = InventorySystem.Instance.itemList;
         
@@ -163,8 +163,8 @@ public class CraftingSystem : MonoBehaviour
                 case "Apple":
                     apple_count += 1;
                     break;
-                case "Banana":
-                    banana_count += 1;
+                case "Lemon":
+                    lemon_count += 1;
                     break;
                 default:
                     Debug.Log("Unknown item: " + itemName);
@@ -187,9 +187,9 @@ public class CraftingSystem : MonoBehaviour
 
         //Fruit Salad
         FruitSaladReq1.text = "2 Apple [" + apple_count + "]";
-        FruitSaladReq2.text = "1 Banana [" + banana_count + "]";
+        FruitSaladReq2.text = "1 Lemon [" + lemon_count + "]";
 
-        if (apple_count >= 2 && banana_count >= 1)
+        if (apple_count >= 2 && lemon_count >= 1)
         {
             craftFruitSaladBTN.gameObject.SetActive(true);
         }

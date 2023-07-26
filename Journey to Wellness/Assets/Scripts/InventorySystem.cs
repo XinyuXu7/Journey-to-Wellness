@@ -127,21 +127,23 @@ public class InventorySystem : MonoBehaviour
 
     public void RemoveItem(string nameToRemove, int amountToRemove)
     {
-        int counter = amountToRemove;
-        for(var i = slotList.Count - 1; i >= 0; i--)
+        int removedCount = 0;
+
+        // Iterate over the list from end to start.
+        for (var i = slotList.Count - 1; i >= 0 && removedCount < amountToRemove; i--)
         {
             if (slotList[i].transform.childCount > 0)
             {
-                if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0)
+                string itemName = slotList[i].transform.GetChild(0).name;
+
+                // If the item matches the name to remove, destroy it.
+                if (itemName == nameToRemove + "(Clone)")
                 {
                     Destroy(slotList[i].transform.GetChild(0).gameObject);
-
-                    counter -= 1;
+                    removedCount++;
                 }
             }
         }
-
-
     }
 
     public void ReCalculeList()
