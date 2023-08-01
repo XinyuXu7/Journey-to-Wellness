@@ -89,9 +89,9 @@ public class CraftingSystem : MonoBehaviour
 
     public IEnumerator calculate()
     {
-        yield return new WaitForSeconds(1f);
-
+        yield return 0;
         InventorySystem.Instance.ReCalculeList();
+        RefreshNeededItems(); 
     }
 
     void CraftAnyItem(Blueprint blueprintToCraft)
@@ -112,13 +112,13 @@ public class CraftingSystem : MonoBehaviour
         //InventorySystem.Instance.ReCalculeList();
         StartCoroutine(calculate());
 
-        RefreshNeededItems();
+        //RefreshNeededItems();
 
     }
     // Update is called once per frame
     void Update()
     {
-        RefreshNeededItems();
+        //RefreshNeededItems();
 
         if (Input.GetKeyDown(KeyCode.C) && !isOpen)
         {
@@ -140,7 +140,7 @@ public class CraftingSystem : MonoBehaviour
         }
     }
 
-    private void RefreshNeededItems()
+    public void RefreshNeededItems()
     {
         int stone_count = 0;
         int stick_count = 0;
