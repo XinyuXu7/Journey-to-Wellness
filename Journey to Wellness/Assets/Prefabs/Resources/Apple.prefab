@@ -120,6 +120,6 @@ MonoBehaviour:
   thisDescription: des
   thisFunctionality: func
   isConsumable: 1
-  healthEffect: 10
-  caloriesEffect: 20
-  hydrationEffect: 30
+  healthEffect: 1
+  caloriesEffect: 100
+  hydrationEffect: 10

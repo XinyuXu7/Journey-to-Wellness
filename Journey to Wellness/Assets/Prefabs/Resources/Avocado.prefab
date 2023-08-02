@@ -119,7 +119,7 @@ MonoBehaviour:
   thisName: Avocado
   thisDescription: 
   thisFunctionality: 
-  isConsumable: 0
-  healthEffect: 0
+  isConsumable: 1
+  healthEffect: 1
   caloriesEffect: 0
   hydrationEffect: 0

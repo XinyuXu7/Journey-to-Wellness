@@ -124,6 +124,8 @@ public class CraftingSystem : MonoBehaviour
         {
             craftingScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             isOpen = true;
 
         }
@@ -135,6 +137,7 @@ public class CraftingSystem : MonoBehaviour
             if (!InventorySystem.Instance.isOpen)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             isOpen = false;
         }

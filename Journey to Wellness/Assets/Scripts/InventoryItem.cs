@@ -8,10 +8,10 @@ using TMPro;
 
 public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
-    // --- Is this item trashable --- //
+    //Is this item trashable
     public bool isTrashable;
 
-    // --- Item Info UI --- //
+    //Item Info UI
     private GameObject itemInfoUI;
 
     private TMPro.TMP_Text itemInfoUI_itemName;
@@ -20,13 +20,20 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public string thisName, thisDescription, thisFunctionality;
 
-    // --- Consumption --- //
+    //Consumption
     private GameObject itemPendingConsumption;
     public bool isConsumable;
 
     public float healthEffect;
     public float caloriesEffect;
     public float hydrationEffect;
+
+    //Equipping
+    public bool isEquippable;
+    private GameObject itemPendingEquipping;
+    public bool isInsideQuickSlot;
+
+    public bool isSelected;
 
 
     private void Start()
@@ -35,6 +42,19 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         itemInfoUI_itemName = itemInfoUI.transform.Find("itemName").GetComponent<TMPro.TMP_Text>();
         itemInfoUI_itemDescription = itemInfoUI.transform.Find("itemDescription").GetComponent<TMPro.TMP_Text>();
         itemInfoUI_itemFunctionality = itemInfoUI.transform.Find("itemFunctionality").GetComponent<TMPro.TMP_Text>();
+    }
+
+
+    void Update()
+    {
+        if(isSelected)
+        {
+            gameObject.GetComponent<DragDrop>().enabled= false;
+        }
+        else
+        {
+            gameObject.GetComponent<DragDrop>().enabled= true;
+        }    
     }
 
     // Triggered when the mouse enters into the area of the item that has this script.
@@ -64,6 +84,12 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 // Setting this specific gameobject to be the item we want to destroy later
                 itemPendingConsumption = gameObject;
                 ConsumingFunction(healthEffect, caloriesEffect, hydrationEffect);
+            }
+
+            if (isEquippable && isInsideQuickSlot == false && EquipSystem.Instance.CheckIfFull() == false)
+            {
+                EquipSystem.Instance.AddToQuickSlots(gameObject);
+                isInsideQuickSlot = true;
             }
         }
     }
