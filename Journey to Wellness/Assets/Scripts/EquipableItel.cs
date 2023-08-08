@@ -21,6 +21,12 @@ public class EquipableItel : MonoBehaviour
             InventorySystem.Instance.isOpen == false &&
             CraftingSystem.Instance.isOpen == false)
         {
+            GameObject selectedTree = SelectionManager.Instance.selectedTree;
+            if(selectedTree != null )
+            {
+                selectedTree.GetComponent<ChoppableTree>().GetHit();
+            }
+
             animator.SetTrigger("hit");
         }
     }
