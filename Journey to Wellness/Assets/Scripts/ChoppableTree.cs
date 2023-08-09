@@ -11,9 +11,14 @@ public class ChoppableTree : MonoBehaviour
     public float treeMaxHealth;
     public float treeHealth;
 
+    public Animator animator;
+
+    public float caloriesSpentChoppingWood = 20;
+
     private void Start()
     {
         treeHealth = treeMaxHealth;
+        animator = transform.parent.transform.parent.GetComponent<Animator>();
     }
 
 
@@ -35,14 +40,32 @@ public class ChoppableTree : MonoBehaviour
 
     public void GetHit()
     {
-        StartCoroutine(hit());
+        animator.SetTrigger("shake");
+
+
+        treeHealth -= 1;
+
+        PlayerState.Instance.currentCalories -= caloriesSpentChoppingWood;
+
+        if (treeHealth <= 0)
+        {
+            TreeIsDead();
+        }
+
 
     }
 
-    public IEnumerator hit()
+
+    void TreeIsDead()
     {
-        yield return new WaitForSeconds(0.6f);
-        treeHealth -= 1;
+        Vector3 treePosition = transform.position;
+
+        Destroy(transform.parent.transform.parent.gameObject);
+        canBeChopped = false;
+        SelectionManager.Instance.selectedTree = null;
+        SelectionManager.Instance.chopHolder.gameObject.SetActive(false);
+
+        GameObject brokenTree = Instantiate(Resources.Load<GameObject>("ChoppedTree"),new Vector3(treePosition.x,treePosition.y,treePosition.z),Quaternion.Euler(0,0,0));
     }
 
     private void Update()
