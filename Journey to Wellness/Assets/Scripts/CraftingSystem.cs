@@ -10,31 +10,47 @@ public class CraftingSystem : MonoBehaviour
     public GameObject craftingScreenUI;
     public GameObject toolsScreenUI;
     public GameObject foodsScreenUI;
-    public GameObject survivalScreenUI;
+    public GameObject constructionScreenUI;
     public GameObject refineScreenUI;
 
     private List<string> inventoryItemList = new List<string>();
 
     //Category Button
     Button toolsBTN;
-    Button foodsBTN, survivalBTN, refineBTN;
+    Button foodsBTN, constructionBTN, refineBTN;
 
 
     //Craft Buttons
     Button craftAxeBTN;
-    Button craftFruitSaladBTN, craftPlankBTN;
+    Button craftFruitSaladBTN, craftCarrotMilkshakeBTN, craftMushroomOnionBTN, craftAvocadoToastBTN, craftBroccoliMeatBTN, craftLemonCucumberBTN;
+    Button craftPlankBTN;
+    Button craftFoundationBTN, craftWallBTN;
 
     //Requirement Text
     TextMeshProUGUI AxeReq1, AxeReq2;
     TextMeshProUGUI FruitSaladReq1, FruitSaladReq2;
+    TextMeshProUGUI CarrotMilkshakeReq1, CarrotMilkshakeReq2;
+    TextMeshProUGUI MushroomOnionReq1, MushroomOnionReq2;
+    TextMeshProUGUI AvocadoToastReq1, AvocadoToastReq2;
+    TextMeshProUGUI BroccoliMeatReq1, BroccoliMeatReq2;
+    TextMeshProUGUI LemonCucumberReq1, LemonCucumberReq2;
     TextMeshProUGUI PlankReq1;
+    TextMeshProUGUI FoundationReq1;
+    TextMeshProUGUI WallReq1;
 
     public bool isOpen;
 
     //All blueprint
     public Blueprint AxeBLP = new Blueprint("Axe",1, 2, "Stone", 3, "Stick", 3);
-    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad",1, 2, "Apple", 2, "Lemon", 1);
+    public Blueprint CarrotMilkshakeBLP = new Blueprint("CarrotMilkshake", 1, 2, "Carrot", 2, "Yogurt", 1);
+    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad", 1, 2, "Apple", 2, "Pear", 1);
+    public Blueprint MushroomOnionBLP = new Blueprint("MushroomOnion", 1, 2, "Mushroom", 2, "Onion", 1);
+    public Blueprint AvocadoToastBLP = new Blueprint("AvocadoToast", 1, 2, "Avocado", 1, "Bread", 1);
+    public Blueprint BroccoliMeatBLP = new Blueprint("BroccoliMeat", 1, 2, "Broccoli", 1, "Meat", 1);
+    public Blueprint LemonCucumberBLP = new Blueprint("LemonCucumber", 1, 2, "Lemon", 1, "Cucumber", 1);
     public Blueprint PlankBLP = new Blueprint("Plank",2, 1, "Log", 1, "", 0);
+    public Blueprint FoundationBLP = new Blueprint("Foundation", 1, 1, "Plank", 4, "", 0);
+    public Blueprint WallBLP = new Blueprint("Wall", 1, 1, "Plank", 2, "", 0);
 
 
     public static CraftingSystem Instance { get; set; }
@@ -62,8 +78,8 @@ public class CraftingSystem : MonoBehaviour
         foodsBTN = craftingScreenUI.transform.Find("FoodsButton").GetComponent<Button>();
         foodsBTN.onClick.AddListener(delegate { OpenFoodsCategory(); });
 
-        survivalBTN = craftingScreenUI.transform.Find("SurvivalButton").GetComponent<Button>();
-        survivalBTN.onClick.AddListener(delegate { OpenSurvivalCategory(); });
+        constructionBTN = craftingScreenUI.transform.Find("ConstructionButton").GetComponent<Button>();
+        constructionBTN.onClick.AddListener(delegate { OpenConstructionCategory(); });
 
         refineBTN = craftingScreenUI.transform.Find("RefineButton").GetComponent<Button>();
         refineBTN.onClick.AddListener(delegate { OpenRefineCategory(); });
@@ -83,11 +99,55 @@ public class CraftingSystem : MonoBehaviour
         craftFruitSaladBTN = foodsScreenUI.transform.Find("FruitSalad").transform.Find("Button").GetComponent<Button>();
         craftFruitSaladBTN.onClick.AddListener(delegate { CraftAnyItem(FruitSaladBLP); });
 
+        //Carrot Milkshake
+        CarrotMilkshakeReq1 = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        CarrotMilkshakeReq2 = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftCarrotMilkshakeBTN = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("Button").GetComponent<Button>();
+        craftCarrotMilkshakeBTN.onClick.AddListener(delegate { CraftAnyItem(CarrotMilkshakeBLP); });
+
+        //Mushroom Onion
+        MushroomOnionReq1 = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        MushroomOnionReq2 = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftMushroomOnionBTN = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("Button").GetComponent<Button>();
+        craftMushroomOnionBTN.onClick.AddListener(delegate { CraftAnyItem(MushroomOnionBLP); });
+
+        //Avocado Toast
+        AvocadoToastReq1 = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        AvocadoToastReq2 = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftAvocadoToastBTN = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("Button").GetComponent<Button>();
+        craftAvocadoToastBTN.onClick.AddListener(delegate { CraftAnyItem(AvocadoToastBLP); });
+
+        //Broccoli Meat
+        BroccoliMeatReq1 = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        BroccoliMeatReq2 = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftBroccoliMeatBTN = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("Button").GetComponent<Button>();
+        craftBroccoliMeatBTN.onClick.AddListener(delegate { CraftAnyItem(BroccoliMeatBLP); });
+
+        //Lemon Cucumber Drink
+        LemonCucumberReq1 = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        LemonCucumberReq2 = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftLemonCucumberBTN = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("Button").GetComponent<Button>();
+        craftLemonCucumberBTN.onClick.AddListener(delegate { CraftAnyItem(LemonCucumberBLP); });
+
         //Plank
         PlankReq1 = refineScreenUI.transform.Find("Plank").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-
         craftPlankBTN = refineScreenUI.transform.Find("Plank").transform.Find("Button").GetComponent<Button>();
         craftPlankBTN.onClick.AddListener(delegate { CraftAnyItem(PlankBLP); });
+
+        //Foundation
+        FoundationReq1 = constructionScreenUI.transform.Find("Foundation").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        craftFoundationBTN = constructionScreenUI.transform.Find("Foundation").transform.Find("Button").GetComponent<Button>();
+        craftFoundationBTN.onClick.AddListener(delegate { CraftAnyItem(FoundationBLP); });
+
+        //Wall
+        WallReq1 = constructionScreenUI.transform.Find("Wall").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        craftWallBTN = constructionScreenUI.transform.Find("Wall").transform.Find("Button").GetComponent<Button>();
+        craftWallBTN.onClick.AddListener(delegate { CraftAnyItem(WallBLP); });
     }
 
     void OpenToolsCategory()
@@ -102,10 +162,10 @@ public class CraftingSystem : MonoBehaviour
         foodsScreenUI.SetActive(true);
     }
 
-    void OpenSurvivalCategory()
+    void OpenConstructionCategory()
     {
         craftingScreenUI.SetActive(false);
-        survivalScreenUI.SetActive(true);
+        constructionScreenUI.SetActive(true);
     }
 
     void OpenRefineCategory()
@@ -167,7 +227,7 @@ public class CraftingSystem : MonoBehaviour
             craftingScreenUI.SetActive(false);
             toolsScreenUI.SetActive(false);
             foodsScreenUI.SetActive(false);
-            survivalScreenUI.SetActive(false);
+            constructionScreenUI.SetActive(false);
             refineScreenUI.SetActive(false);
 
             if (!InventorySystem.Instance.isOpen)
@@ -185,7 +245,24 @@ public class CraftingSystem : MonoBehaviour
         int stick_count = 0;
 
         int apple_count = 0;
+        int pear_count = 0;
+
+        int carrot_count = 0;
+        int yogurt_count = 0;
+
+        int mushroom_count = 0;
+        int onion_count = 0;
+
+        int broccoli_count = 0;
+        int meat_count = 0;
+
+        int avocado_count = 0;
+        int bread_count = 0;
+
         int lemon_count = 0;
+        int cucumber_count = 0;
+
+        int plank_count = 0;
 
         int log_count = 0;
 
@@ -207,11 +284,43 @@ public class CraftingSystem : MonoBehaviour
                 case "Lemon":
                     lemon_count += 1;
                     break;
+                case "Pear":
+                    pear_count += 1;
+                    break;
+                case "Carrot":
+                    carrot_count += 1;
+                    break;
+                case "Yogurt":
+                    yogurt_count += 1;
+                    break;
+                case "Mushroom":
+                    mushroom_count += 1;
+                    break;
+                case "Onion":
+                    onion_count += 1;
+                    break;
+                case "Broccoli":
+                    broccoli_count += 1;
+                    break;
+                case "Meat":
+                    meat_count += 1;
+                    break;
+                case "Avocado":
+                    avocado_count += 1;
+                    break;
+                case "Bread":
+                    bread_count += 1;
+                    break;
+                case "Cucumber":
+                    cucumber_count += 1;
+                    break;
                 case "Log":
                     log_count += 1;
                     break;
+                case "Plank":
+                    plank_count += 1;
+                    break;
                 default:
-                    Debug.Log("Unknown item: " + itemName);
                     break;
             }
         }
@@ -231,7 +340,7 @@ public class CraftingSystem : MonoBehaviour
 
         //Fruit Salad
         FruitSaladReq1.text = "2 Apple [" + apple_count + "]";
-        FruitSaladReq2.text = "1 Lemon [" + lemon_count + "]";
+        FruitSaladReq2.text = "1 Pear [" + pear_count + "]";
 
         if (apple_count >= 2 && lemon_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
         {
@@ -240,6 +349,71 @@ public class CraftingSystem : MonoBehaviour
         else
         {
             craftFruitSaladBTN.gameObject.SetActive(false);
+        }
+
+        //Carrot Milkshake
+        CarrotMilkshakeReq1.text = "2 Carrot [" + carrot_count + "]";
+        CarrotMilkshakeReq2.text = "1 Yogurt [" + yogurt_count + "]";
+
+        if (carrot_count >= 2 && yogurt_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftCarrotMilkshakeBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftCarrotMilkshakeBTN.gameObject.SetActive(false);
+        }
+
+        //Mushroom Onion
+        MushroomOnionReq1.text = "2 Mushroom [" + mushroom_count + "]";
+        MushroomOnionReq2.text = "1 Onion [" + onion_count + "]";
+
+        if (mushroom_count >= 2 && onion_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftMushroomOnionBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftMushroomOnionBTN.gameObject.SetActive(false);
+        }
+
+        //Avocado Toast
+        AvocadoToastReq1.text = "1 Avocado [" + avocado_count + "]";
+        AvocadoToastReq2.text = "1 Bread [" + bread_count + "]";
+
+        if (avocado_count >= 1 && bread_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftAvocadoToastBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftAvocadoToastBTN.gameObject.SetActive(false);
+        }
+
+        //Broccoli Meat
+        BroccoliMeatReq1.text = "1 Broccoli [" + broccoli_count + "]";
+        BroccoliMeatReq2.text = "1 Meat [" + meat_count + "]";
+
+        if (broccoli_count >= 1 && meat_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftBroccoliMeatBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftBroccoliMeatBTN.gameObject.SetActive(false);
+        }
+
+        //Lemon Cucumber
+        LemonCucumberReq1.text = "1 Lemon [" + lemon_count + "]";
+        LemonCucumberReq2.text = "1 Cucumber [" + cucumber_count + "]";
+
+        if (lemon_count >= 1 && cucumber_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftLemonCucumberBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftLemonCucumberBTN.gameObject.SetActive(false);
         }
 
         //Plank
@@ -252,6 +426,30 @@ public class CraftingSystem : MonoBehaviour
         else
         {
             craftPlankBTN.gameObject.SetActive(false);
+        }
+
+        //Foundation
+        FoundationReq1.text = "4 Plank [" + plank_count + "]";
+
+        if (plank_count >= 4 && InventorySystem.Instance.CheckSlotsAvailable(2))
+        {
+            craftFoundationBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftFoundationBTN.gameObject.SetActive(false);
+        }
+
+        //Wall
+        WallReq1.text = "1 Plank [" + plank_count + "]";
+
+        if (plank_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(2))
+        {
+            craftWallBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftWallBTN.gameObject.SetActive(false);
         }
     }
 
