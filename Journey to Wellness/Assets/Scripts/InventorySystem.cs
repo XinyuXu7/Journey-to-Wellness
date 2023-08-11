@@ -91,12 +91,14 @@ public class InventorySystem : MonoBehaviour
 
     public void AddToInventory(string itemName)
     {
-            whatSlotToEquip = FindNextEmptySlot();
+        SoundManager.Instance.PlaySound(SoundManager.Instance.pickupItemSound);
+
+        whatSlotToEquip = FindNextEmptySlot();
 
             itemToAdd = Instantiate(Resources.Load<GameObject>(itemName),whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
             itemToAdd.transform.SetParent(whatSlotToEquip.transform);
 
-            itemList.Add(itemName);
+            itemList.Add(itemName);  
 
         TriggerPickupPopUp(itemName, itemToAdd.GetComponent<Image>().sprite);
 
@@ -133,20 +135,20 @@ public class InventorySystem : MonoBehaviour
         return new GameObject();
     }
 
-    public bool CheckifFull()
+    public bool CheckSlotsAvailable(int emptyNeeded)
     {
-        int counter = 0;
+        int emotySlot = 0;
 
         foreach(GameObject slot in slotList)
         {
-            if(slot.transform.childCount >0)
+            if(slot.transform.childCount <= 0)
             {
-                counter += 1;
+                emotySlot += 1;
             }
 
         }
 
-        if(counter == 21)
+        if(emotySlot >= emptyNeeded)
         {
             return true;
         }

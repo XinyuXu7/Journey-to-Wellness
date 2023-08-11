@@ -382,6 +382,7 @@
 "Assets/Scripts/SceneLoader2.cs"
 "Assets/Scripts/SceneLoader3.cs"
 "Assets/Scripts/SelectionManager.cs"
+"Assets/Scripts/SoundManager.cs"
 "Assets/Scripts/TrashSlot.cs"
 "Assets/Unity UI Samples/Scripts/ActiveStateToggler.cs"
 "Assets/Unity UI Samples/Scripts/ApplicationManager.cs"

@@ -22,7 +22,7 @@ public class EquipableItel : MonoBehaviour
             CraftingSystem.Instance.isOpen == false)
         {
 
-
+            StartCoroutine(SwingSoundDelay());
             animator.SetTrigger("hit");
         }
     }
@@ -32,7 +32,14 @@ public class EquipableItel : MonoBehaviour
         GameObject selectedTree = SelectionManager.Instance.selectedTree;
         if (selectedTree != null)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.chopSound);
             selectedTree.GetComponent<ChoppableTree>().GetHit();
         }
+    }
+
+    IEnumerator SwingSoundDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
     }
 }

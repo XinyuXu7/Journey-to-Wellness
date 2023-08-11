@@ -10,27 +10,31 @@ public class CraftingSystem : MonoBehaviour
     public GameObject craftingScreenUI;
     public GameObject toolsScreenUI;
     public GameObject foodsScreenUI;
+    public GameObject survivalScreenUI;
+    public GameObject refineScreenUI;
 
     private List<string> inventoryItemList = new List<string>();
 
     //Category Button
     Button toolsBTN;
-    Button foodsBTN;
+    Button foodsBTN, survivalBTN, refineBTN;
 
 
     //Craft Buttons
     Button craftAxeBTN;
-    Button craftFruitSaladBTN;
+    Button craftFruitSaladBTN, craftPlankBTN;
 
     //Requirement Text
     TextMeshProUGUI AxeReq1, AxeReq2;
     TextMeshProUGUI FruitSaladReq1, FruitSaladReq2;
+    TextMeshProUGUI PlankReq1;
 
     public bool isOpen;
 
     //All blueprint
-    public Blueprint AxeBLP = new Blueprint("Axe", 2, "Stone", 3, "Stick", 3);
-    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad", 2, "Apple", 2, "Lemon", 1);
+    public Blueprint AxeBLP = new Blueprint("Axe",1, 2, "Stone", 3, "Stick", 3);
+    public Blueprint FruitSaladBLP = new Blueprint("FruitSalad",1, 2, "Apple", 2, "Lemon", 1);
+    public Blueprint PlankBLP = new Blueprint("Plank",2, 1, "Log", 1, "", 0);
 
 
     public static CraftingSystem Instance { get; set; }
@@ -58,6 +62,12 @@ public class CraftingSystem : MonoBehaviour
         foodsBTN = craftingScreenUI.transform.Find("FoodsButton").GetComponent<Button>();
         foodsBTN.onClick.AddListener(delegate { OpenFoodsCategory(); });
 
+        survivalBTN = craftingScreenUI.transform.Find("SurvivalButton").GetComponent<Button>();
+        survivalBTN.onClick.AddListener(delegate { OpenSurvivalCategory(); });
+
+        refineBTN = craftingScreenUI.transform.Find("RefineButton").GetComponent<Button>();
+        refineBTN.onClick.AddListener(delegate { OpenRefineCategory(); });
+
         //Axe
         AxeReq1 = toolsScreenUI.transform.Find("Axe").transform.Find("req1").GetComponent<TextMeshProUGUI>();
         AxeReq2 = toolsScreenUI.transform.Find("Axe").transform.Find("req2").GetComponent<TextMeshProUGUI>();
@@ -72,6 +82,12 @@ public class CraftingSystem : MonoBehaviour
 
         craftFruitSaladBTN = foodsScreenUI.transform.Find("FruitSalad").transform.Find("Button").GetComponent<Button>();
         craftFruitSaladBTN.onClick.AddListener(delegate { CraftAnyItem(FruitSaladBLP); });
+
+        //Plank
+        PlankReq1 = refineScreenUI.transform.Find("Plank").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftPlankBTN = refineScreenUI.transform.Find("Plank").transform.Find("Button").GetComponent<Button>();
+        craftPlankBTN.onClick.AddListener(delegate { CraftAnyItem(PlankBLP); });
     }
 
     void OpenToolsCategory()
@@ -86,6 +102,17 @@ public class CraftingSystem : MonoBehaviour
         foodsScreenUI.SetActive(true);
     }
 
+    void OpenSurvivalCategory()
+    {
+        craftingScreenUI.SetActive(false);
+        survivalScreenUI.SetActive(true);
+    }
+
+    void OpenRefineCategory()
+    {
+        craftingScreenUI.SetActive(false);
+        refineScreenUI.SetActive(true);
+    }
 
     public IEnumerator calculate()
     {
@@ -96,8 +123,14 @@ public class CraftingSystem : MonoBehaviour
 
     void CraftAnyItem(Blueprint blueprintToCraft)
     {
-        //add item into inventory
-        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.craftingSound);
+
+        //Produce the amount of items according to the blueprint
+        for (var i = 0;i< blueprintToCraft.numOfItemsToProduce;i++)
+        {
+            //add item into inventory
+            InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+        }
 
         if (blueprintToCraft.numOfRequirements == 1)
         {
@@ -134,6 +167,9 @@ public class CraftingSystem : MonoBehaviour
             craftingScreenUI.SetActive(false);
             toolsScreenUI.SetActive(false);
             foodsScreenUI.SetActive(false);
+            survivalScreenUI.SetActive(false);
+            refineScreenUI.SetActive(false);
+
             if (!InventorySystem.Instance.isOpen)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -150,6 +186,8 @@ public class CraftingSystem : MonoBehaviour
 
         int apple_count = 0;
         int lemon_count = 0;
+
+        int log_count = 0;
 
         inventoryItemList = InventorySystem.Instance.itemList;
         
@@ -169,6 +207,9 @@ public class CraftingSystem : MonoBehaviour
                 case "Lemon":
                     lemon_count += 1;
                     break;
+                case "Log":
+                    log_count += 1;
+                    break;
                 default:
                     Debug.Log("Unknown item: " + itemName);
                     break;
@@ -179,7 +220,7 @@ public class CraftingSystem : MonoBehaviour
         AxeReq1.text = "3 Stone [" + stone_count + "]";
         AxeReq2.text = "3 Stick [" + stick_count + "]";
 
-        if(stone_count >= 3 && stick_count >=3)
+        if(stone_count >= 3 && stick_count >=3 && InventorySystem.Instance.CheckSlotsAvailable(1))
         {
             craftAxeBTN.gameObject.SetActive(true);
         }
@@ -192,13 +233,25 @@ public class CraftingSystem : MonoBehaviour
         FruitSaladReq1.text = "2 Apple [" + apple_count + "]";
         FruitSaladReq2.text = "1 Lemon [" + lemon_count + "]";
 
-        if (apple_count >= 2 && lemon_count >= 1)
+        if (apple_count >= 2 && lemon_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
         {
             craftFruitSaladBTN.gameObject.SetActive(true);
         }
         else
         {
             craftFruitSaladBTN.gameObject.SetActive(false);
+        }
+
+        //Plank
+        PlankReq1.text = "1 Log [" + log_count + "]";
+
+        if (log_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(2))
+        {
+            craftPlankBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftPlankBTN.gameObject.SetActive(false);
         }
     }
 
