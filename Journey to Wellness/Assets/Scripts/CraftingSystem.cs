@@ -10,14 +10,20 @@ public class CraftingSystem : MonoBehaviour
     public GameObject craftingScreenUI;
     public GameObject toolsScreenUI;
     public GameObject foodsScreenUI;
+    public GameObject foodsScreenUI1;
+    public GameObject foodsScreenUI2;
+    public GameObject foodsScreenUI3;
+    public GameObject foodsScreenUI4;
+    public GameObject foodsScreenUI5;
     public GameObject constructionScreenUI;
+    public GameObject constructionScreenUI1;
     public GameObject refineScreenUI;
 
     private List<string> inventoryItemList = new List<string>();
 
     //Category Button
     Button toolsBTN;
-    Button foodsBTN, constructionBTN, refineBTN;
+    Button foodsBTN, foodsBTN1, foodsBTN2, foodsBTN3, foodsBTN4, foodsBTN5, constructionBTN, constructionBTN1, refineBTN;
 
 
     //Craft Buttons
@@ -75,11 +81,29 @@ public class CraftingSystem : MonoBehaviour
         toolsBTN = craftingScreenUI.transform.Find("ToolsButton").GetComponent<Button>();
         toolsBTN.onClick.AddListener(delegate { OpenToolsCategory(); });
 
-        foodsBTN = craftingScreenUI.transform.Find("FoodsButton").GetComponent<Button>();
+        foodsBTN = craftingScreenUI.transform.Find("FoodsButtonFruitSalad").GetComponent<Button>();
         foodsBTN.onClick.AddListener(delegate { OpenFoodsCategory(); });
 
-        constructionBTN = craftingScreenUI.transform.Find("ConstructionButton").GetComponent<Button>();
+        foodsBTN1 = craftingScreenUI.transform.Find("FoodsButtonCarrotMilkshake").GetComponent<Button>();
+        foodsBTN1.onClick.AddListener(delegate { OpenFoodsCategory1(); });
+
+        foodsBTN2 = craftingScreenUI.transform.Find("FoodsButtonMushroomOnion").GetComponent<Button>();
+        foodsBTN2.onClick.AddListener(delegate { OpenFoodsCategory2(); });
+
+        foodsBTN3 = craftingScreenUI.transform.Find("FoodsButtonAvocadoToast").GetComponent<Button>();
+        foodsBTN3.onClick.AddListener(delegate { OpenFoodsCategory3(); });
+
+        foodsBTN4 = craftingScreenUI.transform.Find("FoodsButtonBroccoliMeat").GetComponent<Button>();
+        foodsBTN4.onClick.AddListener(delegate { OpenFoodsCategory4(); });
+
+        foodsBTN5 = craftingScreenUI.transform.Find("FoodsButtonLemonCucumber").GetComponent<Button>();
+        foodsBTN5.onClick.AddListener(delegate { OpenFoodsCategory5(); });
+
+        constructionBTN = craftingScreenUI.transform.Find("ConstructionButtonWall").GetComponent<Button>();
         constructionBTN.onClick.AddListener(delegate { OpenConstructionCategory(); });
+
+        constructionBTN1 = craftingScreenUI.transform.Find("ConstructionButtonFoundation").GetComponent<Button>();
+        constructionBTN1.onClick.AddListener(delegate { OpenConstructionCategory1(); });
 
         refineBTN = craftingScreenUI.transform.Find("RefineButton").GetComponent<Button>();
         refineBTN.onClick.AddListener(delegate { OpenRefineCategory(); });
@@ -100,38 +124,38 @@ public class CraftingSystem : MonoBehaviour
         craftFruitSaladBTN.onClick.AddListener(delegate { CraftAnyItem(FruitSaladBLP); });
 
         //Carrot Milkshake
-        CarrotMilkshakeReq1 = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        CarrotMilkshakeReq2 = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+        CarrotMilkshakeReq1 = foodsScreenUI1.transform.Find("CarrotMilkshake").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        CarrotMilkshakeReq2 = foodsScreenUI1.transform.Find("CarrotMilkshake").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftCarrotMilkshakeBTN = foodsScreenUI.transform.Find("CarrotMilkshake").transform.Find("Button").GetComponent<Button>();
+        craftCarrotMilkshakeBTN = foodsScreenUI1.transform.Find("CarrotMilkshake").transform.Find("Button").GetComponent<Button>();
         craftCarrotMilkshakeBTN.onClick.AddListener(delegate { CraftAnyItem(CarrotMilkshakeBLP); });
 
         //Mushroom Onion
-        MushroomOnionReq1 = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        MushroomOnionReq2 = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+        MushroomOnionReq1 = foodsScreenUI2.transform.Find("MushroomOnion").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        MushroomOnionReq2 = foodsScreenUI2.transform.Find("MushroomOnion").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftMushroomOnionBTN = foodsScreenUI.transform.Find("SauteedMushroomswithOnions").transform.Find("Button").GetComponent<Button>();
+        craftMushroomOnionBTN = foodsScreenUI2.transform.Find("MushroomOnion").transform.Find("Button").GetComponent<Button>();
         craftMushroomOnionBTN.onClick.AddListener(delegate { CraftAnyItem(MushroomOnionBLP); });
 
         //Avocado Toast
-        AvocadoToastReq1 = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        AvocadoToastReq2 = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+        AvocadoToastReq1 = foodsScreenUI3.transform.Find("AvocadoToast").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        AvocadoToastReq2 = foodsScreenUI3.transform.Find("AvocadoToast").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftAvocadoToastBTN = foodsScreenUI.transform.Find("AvocadoToast").transform.Find("Button").GetComponent<Button>();
+        craftAvocadoToastBTN = foodsScreenUI3.transform.Find("AvocadoToast").transform.Find("Button").GetComponent<Button>();
         craftAvocadoToastBTN.onClick.AddListener(delegate { CraftAnyItem(AvocadoToastBLP); });
 
         //Broccoli Meat
-        BroccoliMeatReq1 = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        BroccoliMeatReq2 = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+        BroccoliMeatReq1 = foodsScreenUI4.transform.Find("BroccoliMeat").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        BroccoliMeatReq2 = foodsScreenUI4.transform.Find("BroccoliMeat").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftBroccoliMeatBTN = foodsScreenUI.transform.Find("StirfriedBroccoliwithMeat").transform.Find("Button").GetComponent<Button>();
+        craftBroccoliMeatBTN = foodsScreenUI4.transform.Find("BroccoliMeat").transform.Find("Button").GetComponent<Button>();
         craftBroccoliMeatBTN.onClick.AddListener(delegate { CraftAnyItem(BroccoliMeatBLP); });
 
         //Lemon Cucumber Drink
-        LemonCucumberReq1 = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        LemonCucumberReq2 = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+        LemonCucumberReq1 = foodsScreenUI5.transform.Find("LemonCucumber").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        LemonCucumberReq2 = foodsScreenUI5.transform.Find("LemonCucumber").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftLemonCucumberBTN = foodsScreenUI.transform.Find("LemonCucumberDrink").transform.Find("Button").GetComponent<Button>();
+        craftLemonCucumberBTN = foodsScreenUI5.transform.Find("LemonCucumber").transform.Find("Button").GetComponent<Button>();
         craftLemonCucumberBTN.onClick.AddListener(delegate { CraftAnyItem(LemonCucumberBLP); });
 
         //Plank
@@ -140,8 +164,8 @@ public class CraftingSystem : MonoBehaviour
         craftPlankBTN.onClick.AddListener(delegate { CraftAnyItem(PlankBLP); });
 
         //Foundation
-        FoundationReq1 = constructionScreenUI.transform.Find("Foundation").transform.Find("req1").GetComponent<TextMeshProUGUI>();
-        craftFoundationBTN = constructionScreenUI.transform.Find("Foundation").transform.Find("Button").GetComponent<Button>();
+        FoundationReq1 = constructionScreenUI1.transform.Find("Foundation").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        craftFoundationBTN = constructionScreenUI1.transform.Find("Foundation").transform.Find("Button").GetComponent<Button>();
         craftFoundationBTN.onClick.AddListener(delegate { CraftAnyItem(FoundationBLP); });
 
         //Wall
@@ -161,11 +185,41 @@ public class CraftingSystem : MonoBehaviour
         craftingScreenUI.SetActive(false);
         foodsScreenUI.SetActive(true);
     }
+    void OpenFoodsCategory1()
+    {
+        craftingScreenUI.SetActive(false);
+        foodsScreenUI1.SetActive(true);
+    }
+    void OpenFoodsCategory2()
+    {
+        craftingScreenUI.SetActive(false);
+        foodsScreenUI2.SetActive(true);
+    }
+    void OpenFoodsCategory3()
+    {
+        craftingScreenUI.SetActive(false);
+        foodsScreenUI3.SetActive(true);
+    }
+    void OpenFoodsCategory4()
+    {
+        craftingScreenUI.SetActive(false);
+        foodsScreenUI4.SetActive(true);
+    }
+    void OpenFoodsCategory5()
+    {
+        craftingScreenUI.SetActive(false);
+        foodsScreenUI5.SetActive(true);
+    }
 
     void OpenConstructionCategory()
     {
         craftingScreenUI.SetActive(false);
         constructionScreenUI.SetActive(true);
+    }
+    void OpenConstructionCategory1()
+    {
+        craftingScreenUI.SetActive(false);
+        constructionScreenUI1.SetActive(true);
     }
 
     void OpenRefineCategory()
@@ -183,6 +237,7 @@ public class CraftingSystem : MonoBehaviour
 
     void CraftAnyItem(Blueprint blueprintToCraft)
     {
+        Debug.Log("Crafting: " + blueprintToCraft.itemName);
         SoundManager.Instance.PlaySound(SoundManager.Instance.craftingSound);
 
         //Produce the amount of items according to the blueprint
@@ -227,7 +282,13 @@ public class CraftingSystem : MonoBehaviour
             craftingScreenUI.SetActive(false);
             toolsScreenUI.SetActive(false);
             foodsScreenUI.SetActive(false);
+            foodsScreenUI1.SetActive(false);
+            foodsScreenUI2.SetActive(false);
+            foodsScreenUI3.SetActive(false);
+            foodsScreenUI4.SetActive(false);
+            foodsScreenUI5.SetActive(false);
             constructionScreenUI.SetActive(false);
+            constructionScreenUI1.SetActive(false);
             refineScreenUI.SetActive(false);
 
             if (!InventorySystem.Instance.isOpen)
@@ -342,7 +403,7 @@ public class CraftingSystem : MonoBehaviour
         FruitSaladReq1.text = "2 Apple [" + apple_count + "]";
         FruitSaladReq2.text = "1 Pear [" + pear_count + "]";
 
-        if (apple_count >= 2 && lemon_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        if (apple_count >= 2 && pear_count >= 1 && InventorySystem.Instance.CheckSlotsAvailable(1))
         {
             craftFruitSaladBTN.gameObject.SetActive(true);
         }
