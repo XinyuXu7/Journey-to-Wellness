@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: -781600084844571595}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

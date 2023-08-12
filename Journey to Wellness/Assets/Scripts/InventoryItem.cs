@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
 
 public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
@@ -35,6 +35,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public bool isSelected;
 
+    public bool isUseable;
 
     private void Start()
     {
@@ -91,6 +92,60 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 EquipSystem.Instance.AddToQuickSlots(gameObject);
                 isInsideQuickSlot = true;
             }
+
+            if(isUseable)
+            {
+                ConstructionManager.Instance.itemToBeDestroyed = gameObject;
+                gameObject.SetActive(false);
+
+                UseItem();
+            }
+        }
+    }
+
+    private void UseItem()
+    {
+        itemInfoUI.SetActive(false);
+
+        InventorySystem.Instance.isOpen = false;
+        InventorySystem.Instance.inventoryScreenUI.SetActive(false);
+
+        CraftingSystem.Instance.isOpen = false;
+        CraftingSystem.Instance.craftingScreenUI.SetActive(false);
+        CraftingSystem.Instance.toolsScreenUI.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI1.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI2.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI3.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI4.SetActive(false);
+        CraftingSystem.Instance.foodsScreenUI5.SetActive(false);
+        CraftingSystem.Instance.constructionScreenUI.SetActive(false);
+        CraftingSystem.Instance.constructionScreenUI1.SetActive(false);
+        CraftingSystem.Instance.refineScreenUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible= false;
+
+        //SelectionManager.Instance.EnableSelection();
+        SelectionManager.Instance.enabled = true;
+
+        switch (gameObject.name)
+        {
+            case "Foundation(Clone)":
+                ConstructionManager.Instance.ActivateConstructionPlacement("FoundationModel");
+                break;
+            case "Foundation": //testing
+                ConstructionManager.Instance.ActivateConstructionPlacement("FoundationModel");
+                break;
+            case "Wall(Clone)":
+                ConstructionManager.Instance.ActivateConstructionPlacement("WallModel");
+                break;
+            case "Wall": //testing
+                ConstructionManager.Instance.ActivateConstructionPlacement("WallModel");
+                break;
+            default:
+                break;
+
         }
     }
 
@@ -105,6 +160,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 InventorySystem.Instance.ReCalculeList();
                 CraftingSystem.Instance.RefreshNeededItems();
             }
+
         }
     }
 

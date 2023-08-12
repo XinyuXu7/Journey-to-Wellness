@@ -19,7 +19,8 @@ public class EquipableItel : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) &&
             InventorySystem.Instance.isOpen == false &&
-            CraftingSystem.Instance.isOpen == false)
+            CraftingSystem.Instance.isOpen == false && 
+            !ConstructionManager.Instance.inConstructionMode)
         {
 
             StartCoroutine(SwingSoundDelay());
