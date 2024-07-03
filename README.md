@@ -1,2 +1,3 @@
 # Journey-to-Wellness
-Computer game with several levels to try and educate children about healthy life.
+为英国小学开发的健康教育游戏
+本项目基于Unity，设计开发了一款针对儿童的3D益智生存冒险游戏，将“游戏”和“健康教育”结合为一体，涵盖了背包系统、制作系统（通过收集不同的素材可以制作不同的食物、工具和建筑材料）、建筑系统（引入鬼影模式，放置建筑块后，该建筑块周围可连接建筑块的区域将通过鬼影呈现）、任务系统（和NPC之间不同的对话选项将触发不同的对话结果和任务剧情）等，玩家可以在沉浸式游戏体验中获取健康知识。
